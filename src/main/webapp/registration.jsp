@@ -31,7 +31,7 @@
 							<div class="form-group">
 								<label for="name"><i
 									class="zmdi zmdi-account material-icons-name"></i></label> <input
-									type="text" name="name" id="name" placeholder="Your Name" />
+									type="text" name="name" id="name" placeholder="Your Name"  />
 							</div>
 							<div class="form-group">
 								<label for="email"><i class="zmdi zmdi-email"></i></label> <input
@@ -89,6 +89,31 @@
 		if(status == "success") {
 			swal("Congrats !", "Account was created successfully", "success");
 		}
+		
+		if(status == "Invalid Username") {
+			swal("Sorry", "Please Enter Username", "error");
+		}
+		
+		if(status == "Invalid Email") {
+			swal("Sorry", "Please Enter Email", "error");
+		}
+		
+		if(status == "Invalid Password") {
+			swal("Sorry", "Please Enter Password", "error");
+		}
+		
+		if(status == "Invalid Confirm Password") {
+			swal("Sorry", "Password does not match", "error");
+		}
+		
+		if(status == "Invalid Mobile") {
+			swal("Sorry", "Please Enter Mobile", "error");
+		}
+		
+		if(status == "Invalid Mobile Length") {
+			swal("Sorry", "Mobile Number should be of 10 digits", "error");
+		}
+		
 	</script>
 
 </body>

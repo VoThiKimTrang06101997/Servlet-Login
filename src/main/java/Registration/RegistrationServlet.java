@@ -24,9 +24,43 @@ public class RegistrationServlet extends HttpServlet {
 		String username = req.getParameter("name");
 		String useremail = req.getParameter("email");
 		String userpassword = req.getParameter("pass");
+		String resetpassword = req.getParameter("re_pass");
 		String usermobile = req.getParameter("contact");
+		
 		RequestDispatcher dispatcher = null;
 		Connection con = null;
+		
+		if(username == null || username.equals("")) {
+			req.setAttribute("status", "Invalid Username");
+			dispatcher = req.getRequestDispatcher("registration.jsp");
+			dispatcher.forward(req, resp);
+		}
+		
+		if(useremail == null || useremail.equals("")) {
+			req.setAttribute("status", "Invalid Email");
+			dispatcher = req.getRequestDispatcher("registration.jsp");
+			dispatcher.forward(req, resp);
+		}
+		
+		if(userpassword == null || userpassword.equals("")) {
+			req.setAttribute("status", "Invalid Password");
+			dispatcher = req.getRequestDispatcher("registration.jsp");
+			dispatcher.forward(req, resp);
+		} else if(!userpassword.equals(resetpassword)) {
+			req.setAttribute("status", "Invalid Confirm Password");
+			dispatcher = req.getRequestDispatcher("registration.jsp");
+			dispatcher.forward(req, resp);
+		}
+		
+		if( usermobile== null || usermobile.equals("")) {
+			req.setAttribute("status", "Invalid Mobile");
+			dispatcher = req.getRequestDispatcher("registration.jsp");
+			dispatcher.forward(req, resp);
+		} else if(usermobile.length() < 10) {
+			req.setAttribute("status", "Invalid Mobile Length");
+			dispatcher = req.getRequestDispatcher("registration.jsp");
+			dispatcher.forward(req, resp);
+		}
 		
 		PrintWriter out = resp.getWriter();
 		out.print(username);
